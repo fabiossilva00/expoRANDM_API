@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template (TypeScript)",
+    "name": "Rick and Morty API GraphQL",
     "slug": "RickAndMortyGraphQL",
     "privacy": "public",
     "sdkVersion": "36.0.0",
