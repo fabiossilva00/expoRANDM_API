@@ -3,9 +3,9 @@ import {
     MainActionTypes
 } from './mainTypes'
 
-export function changeCount(count: number): MainActionTypes {
+export function changePages(pages: number): MainActionTypes {
     return {
         type: MainEnumTypes.CHANGE_COUNT,
-        payload: count
+        payload: pages
     }
 }

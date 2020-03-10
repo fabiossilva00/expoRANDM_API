@@ -4,7 +4,7 @@ export enum MainEnumTypes {
 }
 
 export interface MainState {
-    count: number
+    pages: number
 }
 
 interface ChangeCountAction {
@@ -12,9 +12,4 @@ interface ChangeCountAction {
     payload: number
 }
 
-interface CleanCountAction {
-    type: typeof MainEnumTypes.CLEAN_COUNT
-    payload: number
-}
-
-export type MainActionTypes = ChangeCountAction | CleanCountAction
+export type MainActionTypes = ChangeCountAction

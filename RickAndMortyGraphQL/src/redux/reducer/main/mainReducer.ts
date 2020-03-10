@@ -5,7 +5,7 @@ import {
 } from './mainTypes'
 
 const initialState: MainState = {
-    count: 0
+    pages: 1
 }
 
 export function mainReducer(state = initialState, action: MainActionTypes): MainState {
@@ -13,7 +13,7 @@ export function mainReducer(state = initialState, action: MainActionTypes): Main
         case MainEnumTypes.CHANGE_COUNT: 
             return {
                 ...state,
-                count: action.payload
+                pages: action.payload
             }
         default: 
             return state
