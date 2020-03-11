@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   ActivityIndicator
 } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { useSelector, useDispatch } from 'react-redux'
 
 import CharacterItem from '../components/characterItemFlatList'
@@ -14,7 +14,7 @@ import EmptyItem from '../components/emptyItem'
 import { RootReducers } from '../redux/reducer/combineReducers'
 
 import { addCharactersInRedux } from '../controllers/characters'
-import { FlatList } from 'react-native-gesture-handler';
+import { Colors } from '../constants/colors'
 
 export default function Main() {
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ export default function Main() {
   return (
     <View style={styles.container}>
       <FlatList
-        renderItem={CharacterItem}
+        renderItem={({item}) => <CharacterItem item={item}/>}
         data={charactersReducer.characters}
         extraData={charactersReducer}
         ItemSeparatorComponent={ItemSeparator}
@@ -61,7 +61,7 @@ export default function Main() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.branco,
     height: "100%",
     width: "100%",
     paddingVertical: 16

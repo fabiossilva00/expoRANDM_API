@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import {
     View,
     Text,
-    Animated,
+    TouchableWithoutFeedback,
     StyleSheet,
     Image
 } from "react-native"
@@ -10,10 +10,17 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp
 } from 'react-native-responsive-screen'
+import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
 
-import { CharacterDetails } from '../models/Characters/Characters'
+import Characters from '../models/Characters/Characters'
 
-const renderItem = ({item} : {item: CharacterDetails}) => {
+import { showCharInScreen } from '../redux/reducer/characterDetails/characterDetailsAction'
+
+const renderItem = ({item} : {item: Characters}) => {
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+
     return (
         <View style={styles.container}>
             <View style={styles.containerWithoutImage}>
@@ -24,9 +31,17 @@ const renderItem = ({item} : {item: CharacterDetails}) => {
                     <Text>{item.species}</Text>
                 </View>
             </View>
-            <Image style={styles.image}
-                source={{uri: item.image}}
-            />
+            <TouchableWithoutFeedback
+                onPress={() => {
+                        navigation.navigate("CharacterDetails")
+                        dispatch(showCharInScreen(item))
+                    }
+                }
+            >
+                <Image style={styles.image}
+                    source={{uri: item.image}}
+                />
+            </TouchableWithoutFeedback>
         </View>
     )
 }
@@ -41,8 +56,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingRight: hp("3.2%")
-        // borderColor: 'black',
-        // borderWidth: 1
     },
     textName: {
         fontSize: hp("2.5%"),
@@ -52,18 +65,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: "90%",
-        // borderColor: 'black',
-        // borderWidth: 1
     },
     containerWithoutImage: {
         height: "100%",
         width: "75%",
         justifyContent: 'space-around',
-        // borderColor: 'black',
-        // borderWidth: 1
     },
     image: {
-        width: hp("8.2%"),
-        height: hp("8.2%")
+        width: hp("8.1%"),
+        height: hp("8.1%")
     }
 })

@@ -8,7 +8,6 @@ import ResponseHandler from '../../models/Requests/Response'
 import { ResponseAllCharactersAndPages } from '../../models/Requests/ResponseCharactersPage'
 
 export async function getAllCharactersPerPage(page: number) {
-    console.log(page)
     try {
         const response = await apolloClient.query({
             query: allCharactersWithPages,
@@ -16,9 +15,7 @@ export async function getAllCharactersPerPage(page: number) {
                 page: page
             }
         })
-        console.log(response)
         const handler = _handlerAllCharacterPerPage(response)
-        console.log(handler)
         return handler
     } catch (err) {
         console.log(err)

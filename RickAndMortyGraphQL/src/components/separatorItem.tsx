@@ -4,6 +4,8 @@ import {
     StyleSheet
 } from 'react-native'
 
+import { Colors } from '../constants/colors'
+
 const renderItem = () => <View style={styles.separator} />
 
 export default renderItem
@@ -12,8 +14,8 @@ const styles = StyleSheet.create({
     separator: {
         height: 1,
         width: "94%",
-        backgroundColor: 'grey',
+        backgroundColor: Colors.cinza,
         alignSelf: 'center',
-        marginVertical: 5,
+        marginVertical: 6,
     }
 })
